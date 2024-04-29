@@ -93,6 +93,14 @@ router.post(
         newItem
           .save()
           .then(() => {
+            fs.unlink(image.path, (err) => {
+              if (err) {
+                console.error("로컬이미지삭제 에러:", err);
+              } else {
+                console.log("로컬이미지 삭제완료");
+              }
+            });
+
             return res.status(200).send({
               message: "아이템 추가 성공",
             });
