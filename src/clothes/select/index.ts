@@ -172,7 +172,7 @@ router.post("/", async (req: Request, res: Response) => {
     }
   }
   return res.status(200).send({
-    message: "코디 선택왼료",
+    message: "코디 선택완료",
   });
 });
 
