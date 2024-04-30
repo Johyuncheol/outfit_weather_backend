@@ -14,7 +14,7 @@ const router = express.Router();
 // 파일 업로드를 위한 설정
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/"); // 업로드된 파일이 저장될 디렉터리 설정
+    cb(null, "/uploads/"); // 업로드된 파일이 저장될 디렉터리 설정
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname); // 파일의 원본 파일명 사용
