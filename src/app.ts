@@ -11,7 +11,10 @@ const port = 8080;
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "http://localhost:3000",
+      "https://outfit-weather-w67mg7dx7-johyuncheols-projects.vercel.app",
+    ],
     credentials: true,
   })
 );
