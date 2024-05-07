@@ -7,7 +7,7 @@ import deleteRouter from "./delete";
 import updateRouter from "./update";
 const router = express.Router();
 
-// /api/user/clothes/*
+// /user/clothes/*
 router.use("/recommend", recommendRouter);
 router.use("/add", addRouter);
 router.use("/get", getRouter);

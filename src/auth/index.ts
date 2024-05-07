@@ -4,7 +4,7 @@ import registerRouter from "./register";
 import logoutRouter from "./logout";
 const router = express.Router();
 
-// /api/auth/*
+// /auth/*
 router.use("/register", registerRouter);
 router.use("/login", loginRouter);
 router.use("/logout", logoutRouter);

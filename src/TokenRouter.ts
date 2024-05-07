@@ -58,7 +58,7 @@ router.use(async (req, res, next) => {
   }
 });
 
-// /api/user/*
+// /user/*
 router.use("/clothes", clothesRouter);
 router.use("/islogin", IsLoginRouter);
 export default router;
