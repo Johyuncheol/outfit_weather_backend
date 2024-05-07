@@ -7,6 +7,7 @@ import {
 } from "./util/TokenVaildate";
 import clothesRouter from "./clothes/index";
 import IsLoginRouter from "./auth/isLogin";
+import { strict } from "assert";
 
 const router = express.Router();
 
@@ -41,7 +42,7 @@ router.use(async (req, res, next) => {
       // 새로 발급한 엑세스 토큰으로 요청에 대한 응답 설정
       res.cookie("accessToken", newAccessToken, {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: "strict",
         secure: true,
         maxAge: 1 * 60 * 60 * 1000,
       });

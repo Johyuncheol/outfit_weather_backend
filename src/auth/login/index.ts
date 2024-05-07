@@ -65,14 +65,14 @@ router.post("/", async (req: Request, res: Response) => {
 
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: "strict",
         secure: true,
         maxAge: 1 * 60 * 60 * 1000,
       }); // 1시간 동안 유효
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: "strict",
         secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
       }); // 7일 동안 유효

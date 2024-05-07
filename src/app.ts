@@ -13,7 +13,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://outfit-weather-iota.vercel.app"
+      "https://outfit-weather-iota.vercel.app",
+      "https://outfit-weather.com"
     ],
     credentials: true,
   })
