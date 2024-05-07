@@ -29,8 +29,7 @@ app.listen(port, function () {
 ///////////////////////////////////
 // 라우터
 
-app.use("/api/user", TokenRouter);
-app.use("/api/auth", authRouter);
-/* app.use("/api", Router); */
+app.use("/user", TokenRouter);
+app.use("/auth", authRouter);
 
 /////////////////////////////////////
