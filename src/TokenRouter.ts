@@ -32,7 +32,7 @@ router.use(async (req, res, next) => {
     if (!isUserValid) throw new Error("Is wrong Token (access,refresh)");
 
     const isTimeValid = decodedAccessToken(accessToken);
-    console.log(accessToken);
+    
     // 엑세스 토큰이 만료된 경우 재발급
     if (!isTimeValid) {
       const decodedRefreshToken = verifyRefreshToken(refreshToken);

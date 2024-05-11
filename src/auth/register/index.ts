@@ -23,7 +23,6 @@ router.post("/", async (req: Request, res: Response) => {
   const userPW = req.body.password;
   const userNickName = req.body.nickname;
 
-  console.log(userId, userPW, userNickName);
   // 입력값이 충분 하지않을 경우
   if (!(userId && userPW && userNickName)) {
     return res.status(401).send({
@@ -55,7 +54,7 @@ router.post("/", async (req: Request, res: Response) => {
   // 저장
   me.save()
     .then(() => {
-      console.log(me);
+      console.log("저장완료");
     })
     .catch((err: string) => {
       console.log("Error : " + err);

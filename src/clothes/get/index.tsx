@@ -43,7 +43,6 @@ router.get("/", async (req: Request, res: Response) => {
 
   findData.bottom = await Items.find({ category: "bottom" });
 
-  console.log(findData);
   return res.status(200).send({
     data: findData,
     message: "아이템 조회왼료",
@@ -61,7 +60,6 @@ router.get("/nav", async (req: Request, res: Response) => {
 
   const findData = await Items.find({ temp: fomatTemp });
 
-  console.log(findData);
   return res.status(200).send({
     data: findData,
     message: "아이템 조회왼료",

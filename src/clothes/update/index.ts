@@ -41,7 +41,6 @@ router.patch("/", async (req: Request, res: Response) => {
       if (Array.isArray(doc.weight[key]) && doc.weight[key].length > 0) {
         doc.weight[key] = doc.weight[key].map((item: any) => {
           if (item._id.toString() === itemId) {
-            console.log(111);
             console.log({ ...item, ...updateData });
             return { ...item, ...updateData };
           }

@@ -28,7 +28,6 @@ router.post("/", async (req: Request, res: Response) => {
   const accessToken = req.cookies.accessToken;
   const { userId } = decodedAccessToken(accessToken);
   const { outer, top, inner, bottom } = req.body;
-  console.log(outer);
   const Items = connection1.model(userId, ItemSchema);
 
   interface itemtype {
@@ -54,7 +53,6 @@ router.post("/", async (req: Request, res: Response) => {
 
   /// 아우터
   if (outer && outerItem.weight.top) {
-    console.log(1)
     const indexTop = outerItem.weight.top.findIndex(
       (item: { _id: any }) =>
         item._id.toString() === new ObjectId(top).toString()
@@ -64,7 +62,6 @@ router.post("/", async (req: Request, res: Response) => {
       outerItem.weight.top[indexTop].count++;
     } else {
       outerItem.weight.top.push({ ...topItem.toObject(), count: 1 });
-      console.log(outerItem);
     }
 
     ///////////
@@ -106,7 +103,6 @@ router.post("/", async (req: Request, res: Response) => {
   }
   /// 상의 ////////////////////////////////////////////
   if (topItem && topItem.weight.inner) {
-    console.log(2)
     const indexInner = topItem.weight.inner.findIndex(
       (item: { _id: any }) =>
         item._id.toString() === new ObjectId(inner).toString()
@@ -145,7 +141,6 @@ router.post("/", async (req: Request, res: Response) => {
   }
   /// 이너 ////////////////////////////////////////////
   if (innerItem && innerItem.weight.bottom) {
-    console.log(3)
     ///////////
     const indexbottom = innerItem.weight.bottom.findIndex(
       (item: { _id: any }) =>
@@ -186,7 +181,6 @@ router.get("/nav", async (req: Request, res: Response) => {
 
   const findData = await Items.find({ temp: fomatTemp });
 
-  console.log(findData);
   return res.status(200).send({
     data: findData,
     message: "아이템 조회왼료",

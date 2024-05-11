@@ -25,7 +25,7 @@ const upload = multer({ storage: storage });
 
 // 환경변수
 const { MONGO_ITEM_URI } = process.env;
-const { S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION, S3_BUCKET_NAME } = process.env;
+const { S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION, S3_BUCKET_NAME,CLOUDFRONT_URL } = process.env;
 
 // mongoDB 설정
 const mongoose = require("mongoose");
@@ -79,14 +79,14 @@ router.post(
       try {
         const command = new PutObjectCommand(params);
         await client.send(command);
-        const s3Url = `https://${params.Bucket}.s3.amazonaws.com/${key}`; // S3 객체의 URL
+        const imgUrl = `${CLOUDFRONT_URL}/${key}`; 
 
         const Items = connection1.model(userId, ItemSchema);
         const { file, ...rest } = req.body;
-        console.log(rest);
+
         const newItem = new Items({
           ...rest,
-          imgSrc: s3Url,
+          imgSrc: imgUrl,
           weight: { outer: [], top: [], inner: [], bottom: [] },
         });
 
