@@ -116,11 +116,9 @@ router.get("/", async (req: Request, res: Response) => {
         // weight의 아이템보다 추출하는 데이터가 많다면 카테고리 가중치 배열에서 무작위 추출
         if (item.length - 1 >= i) {
           newComb[category] = item[i];
-        } else if (item.length === 0) {
-          newComb[category] = getRandomValue(AllData[category]);
         } else {
-          newComb[category] = getRandomValue(item);
-        }
+          newComb[category] = getRandomValue(AllData[category]);
+        } 
       });
 
       // 중복확인해서 중복아닐때만 추가 시킴
