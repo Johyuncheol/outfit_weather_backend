@@ -118,11 +118,26 @@ router.get("/", async (req: Request, res: Response) => {
           newComb[category] = item[i];
         } else {
           newComb[category] = getRandomValue(AllData[category]);
-        } 
+        }
       });
 
+      const combinationString = JSON.stringify(newComb);
+
+      // count를 제외한 문자열 추출
+      function removeCount(combinationKey: string) {
+        const obj = JSON.parse(combinationKey);
+        for (const key in obj) {
+          if (key !== "count" && key !== "weight") {
+            delete obj[key]["count"];
+            delete obj[key]["weight"];
+        }
+        }
+        return JSON.stringify(obj);
+      }
+
+      const combinationKey = removeCount(combinationString);
+
       // 중복확인해서 중복아닐때만 추가 시킴
-      const combinationKey = JSON.stringify(newComb);
       if (!uniqueCombinations.has(combinationKey)) {
         uniqueCombinations.add(combinationKey);
 

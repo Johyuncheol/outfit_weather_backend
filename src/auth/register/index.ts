@@ -27,7 +27,7 @@ router.post("/", async (req: Request, res: Response) => {
   if (!(userId && userPW && userNickName)) {
     return res.status(401).send({
       data: null,
-      status: "check input data",
+      message: "입력값을 확인해주세요",
     });
   }
 
@@ -38,7 +38,7 @@ router.post("/", async (req: Request, res: Response) => {
   if (existingUser.length > 0) {
     return res.status(201).send({
       data: null,
-      status: "already exist user",
+      message: "이미 존재하는 유저입니다",
     });
   }
 
@@ -62,7 +62,7 @@ router.post("/", async (req: Request, res: Response) => {
 
   return res.status(200).send({
     data: null,
-    status: "Success to get register",
+    message: "회원가입 성공",
   });
 });
 
