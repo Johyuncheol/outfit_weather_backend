@@ -60,7 +60,7 @@ router.post("/", async (req: Request, res: Response) => {
       console.log("Error : " + err);
     });
 
-  return res.status(201).send({
+  return res.status(200).send({
     data: null,
     status: "Success to get register",
   });
