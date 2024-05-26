@@ -33,6 +33,7 @@ router.get("/", async (req: Request, res: Response) => {
     top: [],
     inner: [],
     bottom: [],
+    all:[]
   };
 
   findData.outer = await Items.find({ category: "outer" });
@@ -42,6 +43,8 @@ router.get("/", async (req: Request, res: Response) => {
   findData.inner = await Items.find({ category: "inner" });
 
   findData.bottom = await Items.find({ category: "bottom" });
+  
+  findData.all = findData.outer.concat(findData.top,findData.inner,findData.bottom)
 
   return res.status(200).send({
     data: findData,
